@@ -1,6 +1,6 @@
 {
-  "versionCode": 34,
-  "versionName": "1.4",
-  "changelog": "首页热播改为 TMDB 数据，国内直连，告别空白",
-  "downloadUrl": "https://github.com/collgreen/mingtv/releases/download/v1.4/MINGTV_v1.4_release.apk"
+  "versionCode": 35,
+  "versionName": "1.5",
+  "changelog": "热更新支持应用内下载安装，无需跳转浏览器；优化代理竞速策略",
+  "downloadUrl": "https://github.com/collgreen/mingtv/releases/download/v1.5/MINGTV_v1.5_release_20260224.apk"
 }

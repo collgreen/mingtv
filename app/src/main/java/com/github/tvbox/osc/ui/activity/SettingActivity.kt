@@ -467,7 +467,7 @@ class SettingActivity : BaseVbActivity<ActivitySettingBinding>() {
 
     private fun getHomeRecName(type: Int): String {
         return when (type) {
-            0 -> "豆瓣热播"
+            0 -> "TMDB热播"
             1 -> "站点推荐"
             else -> "关闭"
         }
