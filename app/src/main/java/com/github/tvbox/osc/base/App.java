@@ -102,7 +102,7 @@ public class App extends MultiDexApplication {
             Hawk.put(HawkConfig.SUBSCRIPTIONS, subscriptions);
         }
         if(!Hawk.contains(HawkConfig.LIVE_URL)){
-            Hawk.put(HawkConfig.LIVE_URL, "https://mirror.ghproxy.com/https://raw.githubusercontent.com/collgreen/mingtv/main/tvbox/live.txt");
+            Hawk.put(HawkConfig.LIVE_URL, "https://ghfast.top/raw.githubusercontent.com/Supprise0901/TVBox_live/main/live.txt");
         }
     }
 

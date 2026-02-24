@@ -35,6 +35,8 @@
     </string-array>
 
     <string-array name="api">
-        <item>https://mirror.ghproxy.com/https://raw.githubusercontent.com/collgreen/mingtv/main/tvbox/vod.json</item>
+        <item>http://肥猫.com</item>
+        <item>http://ok321.top/ok</item>
+        <item>http://www.饭太硬.com/tv</item>
     </string-array>
 </resources>
