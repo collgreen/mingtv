@@ -1,0 +1,37 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 30
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    packagingOptions {
+        exclude 'META-INF/beans.xml'
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    api('com.orhanobut:logger:2.2.0')
+    api files('../app/libs/cling-core-2.1.1.jar')
+    api files('../app/libs/cling-support-2.1.1.jar')
+    api files('../app/libs/seamless-util-1.1.1.jar')
+    api files('../app/libs/seamless-http-1.1.1.jar')
+    api files('../app/libs/seamless-xml-1.1.1.jar')
+}

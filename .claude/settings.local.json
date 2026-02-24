@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(copy:*)",
+      "Bash(./gradlew assembleRelease)",
+      "Bash(echo:*)",
+      "Bash(./gradlew assembleRelease --offline)",
+      "Bash(./gradlew assembleRelease --refresh-dependencies)",
+      "WebFetch(domain:jitpack.io)",
+      "Bash(curl:*)",
+      "Bash(git clone:*)",
+      "Bash(keytool:*)",
+      "Bash(python:*)",
+      "Bash(head:*)",
+      "Bash(git:*)",
+      "Bash(ls:*)"
+    ]
+  }
+}
