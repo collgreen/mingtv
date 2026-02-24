@@ -153,9 +153,8 @@ public class UserFragment extends BaseLazyFragment {
                     }
                 }
             }
-            String doubanUrl = "https://movie.douban.com/j/new_search_subjects?sort=U&range=0,10&tags=&playable=1&start=0&year_range=" + year + "," + year;
-            OkGo.<String>get(doubanUrl)
-                    .headers("User-Agent", UA.randomOne())
+            String tmdbUrl = "https://api.tmdb.org/3/trending/all/day?api_key=9a2807068e5748a5b52cdc331353a0c4&language=zh-CN&page=1";
+            OkGo.<String>get(tmdbUrl)
                     .execute(new AbsCallback<String>() {
                         @Override
                         public void onSuccess(Response<String> response) {
@@ -193,18 +192,23 @@ public class UserFragment extends BaseLazyFragment {
         ArrayList<Movie.Video> result = new ArrayList<>();
         try {
             JsonObject infoJson = new Gson().fromJson(json, JsonObject.class);
-            JsonArray array = infoJson.getAsJsonArray("data");
+            JsonArray array = infoJson.getAsJsonArray("results");
             for (JsonElement ele : array) {
                 JsonObject obj = (JsonObject) ele;
                 Movie.Video vod = new Movie.Video();
-                vod.name = obj.get("title").getAsString();
-                vod.note = obj.get("rate").getAsString();
-                if (!vod.note.isEmpty()) vod.note += " 分";
-                vod.pic = obj.get("cover").getAsString() + "@Referer=https://movie.douban.com/@User-Agent=" + UA.random();
+                // 电影用 title，剧集用 name
+                vod.name = obj.has("title") && !obj.get("title").getAsString().isEmpty()
+                        ? obj.get("title").getAsString()
+                        : obj.get("name").getAsString();
+                double score = obj.has("vote_average") ? obj.get("vote_average").getAsDouble() : 0;
+                vod.note = score > 0 ? String.format("%.1f 分", score) : "";
+                String posterPath = obj.has("poster_path") && !obj.get("poster_path").isJsonNull()
+                        ? obj.get("poster_path").getAsString() : "";
+                vod.pic = posterPath.isEmpty() ? "" : "https://image.tmdb.org/t/p/w500" + posterPath;
                 result.add(vod);
             }
         } catch (Throwable th) {
-
+            th.printStackTrace();
         }
         return result;
     }
